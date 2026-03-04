@@ -1,0 +1,46 @@
+\---  
+title: "Types Of Databases"  
+series: "DataMaxing"  
+essay\_number: 02  
+section: "Database Fundamentals"  
+level: "Beginner"  
+tags: \[one to many, many to many, document model, relational model, graph model, keys, joins\]  
+last\_updated: 2026-03-03  
+\---  
+**Types Of Databases**  
+\---
+
+**Intro**  
+	In the previous essay we discussed what a database system is and the advantages it provides over a simple file storage system. We began to explain the different relationships data can present, leading us to allude to the optimization of different databases in order to best suit those relationships. In this essay we will delve deeper into those relationships and the databases most suited to them. Starting with a description of two fundamental relationships; one to many and many to many. Then we will discuss what kind of databases are best for these applications and why. By the end you should have a clear understanding of the benefits and drawbacks to the three main database models; document, relational and graphical.   
+**One To Many**   
+	One to many or hierarchical data presents itself in a wide variety of fields. One to many refers to any structure in which there is a parent field with multiple children relating back to it. This was depicted in the previous essay’s example of an online ordering database. The customer is the parent as each customer is considered unique and each order the place is a child field which must be related back to them. Similarly a department in which numerous employees may work is a one to many relationship. Each department would be a parent with each employee working under it a child. The critical constraint here is that every child has one and only one parent.   
+**Many To Many**   
+	A many to many relationship is more complex than one to many, and thus requires specific data models in order to accommodate it. This relationship is defined by entities which have both many children and many parents (a bidirectional one to many relation). An example of such a relationship is the friends connection in the social media example from the previous essay. Each person has multiple friends who follow them and they follow multiple people, creating a many to many structure. Unlike hierarchical one to many models, this structure can not be described as a tree structure, and thus requires specific data models in order to accommodate it.  
+**The Document Model**   
+	A document database is a collection json, bson, xml or the like where each document is stored as a record within the database. This is more than a simple file storage system though as it provides indexing for querying records and within them, supports updates in place and concurrency between users. The hierarchical tree format of json and the others provide a clear medium for storing one to many relations. As these records store all related information in the same place it can serve to decrease latency when applications often require large chunks of data from each record (as compared to the relational model which will be discussed next). The document model often suffers in performance when dealing with many to many relationships. Because most document models do not support joins they must model these relationships with duplication, or by creating manual joins in the application layer which increase application complexity and cost.   
+Using the json (or other similar) format also gives an advantage over a relation database due to object-relational response impedance. This is when an application implements object oriented programming techniques and due to the formatting of a relational database there must be a layer of code between the database output and the application layer in order to convert the relational output. Because this is not an issue for the document model it gains an advantage in application simplicity over a relational database.   
+	Another advantage of a document model is that they typically do not enforce a schema at the database level. This may seem like a disadvantage after the discussion from the previous essay,  however in the correct circumstance it can be beneficial. Document models often enforce ‘schema on read’ which means the application code assumes a schema exists in the underlying data and enforces it upon retrieval. This is a positive if the schema is expected to change over time (or drift) as with relational models a change in schema would be time consuming as it must update the entire table in place. Additionally if for some reason the data consists of a variety of objects under the same attribute a relational schema on write can be too constrictive causing problems when writing to the table. This is not an issue for a schema on read database.   
+**The Relational Model**  
+The relational data model solves the problem of many to many relations and provides great versatility and generality. It accomplishes this through the use of keys and joins. A relational database lays out relations in the forms of tables. Each relation is stored separately  as unordered tuples on disk. Each row in a relation can be identified by a key then joined to another relation through the keys they share ( for more information on keys and joins see essays 3, 5, and 7). By  storing relations separately and allowing for the construction of join tables at query time through foreign key implementation the relational model solves the many to many problems while providing a great amount of flexibility.   
+Keys and joins allow for a database to be normalized. In a statement, normalization refers to splitting relations across tables, such that a unique bit of data is only held in one location (for more information see essay 4). There are differing levels of normalization and more will be spoken of them later. This is an advantage, as it allows for faster updates and writes to a database which as we discussed in *the document model* is one of the disadvantages to the relational system.   
+schema on write, the cause of slow updating, can also serve as an advantage. If you are working with consistent highly structured data the schema enforcement will help to ensure fields are properly inserted into the table. This can be as simple as ensuring numerical values are indeed numerical or text values text. There also exists the ability to place constraints on the data upon ingestion. The use of keys will enforce uniqueness of the data and flags will be raised if the information is not unique. There can be constraints on null entries or even default values when no value is entered into an attribute. This allows for a high level of control and consistency within the database at the price of reduced speed.   
+**The Graph Model**  
+	Graph models are designed with complex relationship modeling at their heart. Although they are similar to relation models and can even be implemented within them, there are many graph specific softwares and they deserve their own discussion.   
+The graph model stores two unique types of data: nodes and edges. A node is an object and contains data about that object e.g. node \- person \- name: Grace,  age : 22\. An edge is a property which serves to connect two objects. Each edge has a tail and a head node. This indicates the direction of the relationship, e.g. grace \- \[lives\_in\] \-\> Austin where grace is the tail node and Austin the head, while the edge lives\_in indicates the relation between the two nodes.   
+The graph database’s querying language will enable easily traversing an unknown number of edges before arriving at the desired node. For example let Austin \-\[with\_in\]\_\>Texas, Texas \- \[within\] \-\> United States, and United States \- \[within\]-\> North America. If you wanted to query for all the people born in North America the language would easily support this and return all people nodes who have a born\_in edge whose node eventually leads to North America through a series of within wedges. This avoids the complex recursive joins needed in a relational model to accomplish the same task.   
+The storage of nodes and edges takes up a fair amount of space but the result is very efficient path searching and simply query syntax. This makes a graph model a great option for describing very complex relationships between data.   
+**Summary**  
+	There is no ‘one size fits all’ database model. Each has been tailored to fit a niche of data relations. Each model comes with its own pros and cons. Understanding these will help to choose the database model for a specific application.   
+	There is so much information regarding each model, becoming a master of anyone is an achievement. On top of that, each has a number of commonly used software providers each with slightly different syntax and features. The relational model is the most generally used and therefore we will tend to focus there in the remaining essays. As you will see even when restricting to one type, mastery can be quite the challenge. 
+
+\---
+
+\#\# Part of the Series
+
+\<- Previous: \[What Is a Database\](01\_What\_Is\_a\_Database.md)  
+\-\> Next: \[What Is a Relational Database\](03\_What\_Is\_a\_Relational\_Database.md)
+
+From : \[01\]  
+Leads to : \[03, 04, 05\]
+
+\---
