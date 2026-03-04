@@ -28,4 +28,4 @@ As the world of data and analytics evolved, data stores and accessibility did al
 \#\# Part of the Series
 
 \<- Previous: \[\]()  
-\-\> Next: \[Types Of Databases\](02/Types\_Of\_Database.md)
+\-\> Next: \[Types Of Databases\](02\_Types\_Of\_Database.md)
