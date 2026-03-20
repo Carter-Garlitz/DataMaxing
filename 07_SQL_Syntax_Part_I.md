@@ -4,7 +4,7 @@ series: "DataMaxing"
 essay\_number: 07  
 section: "SQL And Query Construction"  
 level: "Beginner"  
-tags: \[SQL\]  
+tags: \[SQL, normalization, keys, syntax, relations, schema\]  
 last\_updated: 2026-03-20  
 \---  
 **SQL Syntax Part I**
