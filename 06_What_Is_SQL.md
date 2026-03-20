@@ -5,7 +5,7 @@ essay\_number: 06
 section: "SQL And Query Construction"  
 level: "Beginner"  
 tags: \[SQL\]  
-last\_updated: 2026-03-03  
+last\_updated: 2026-03-17  
 \---  
 **What is sql**
 
@@ -27,8 +27,8 @@ One of the most powerful results of this tabular output is that query results be
 
 \#\# Part of the Series
 
-\<- Previous: \[What Is Normalization\](04\_What\_Is\_Normalization.md)  
-\-\> Next: \[What Is SQL\](06\_What\_Is\_SQL.md)
+\<- Previous: \[What Are Keys\](05\_What\_Are\_Keys.md)  
+\-\> Next: \[SQl Syntax Part I\](06\_SQL\_Syntax\_Part\_I.md)
 
 From : \[05\]  
 Leads to : \[07, …\]
